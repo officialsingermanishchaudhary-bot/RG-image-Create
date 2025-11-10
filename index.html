@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RG AI Images</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            fontFamily: {
+                sans: ['Inter', 'sans-serif'],
+                display: ['Poppins', 'sans-serif'],
+            },
+            colors: {
+              brandFrom: '#6A4CFF',
+              brandTo: '#00E0A8',
+              accent1: '#FF6B6B',
+              accent2: '#FFD166',
+              bgLight: '#F7F8FA',
+              bgDark: '#0B0E13',
+              surfaceLight: 'rgba(255, 255, 255, 0.7)',
+              surfaceDark: 'rgba(255, 255, 255, 0.04)',
+              goldFrom: '#f7d06e',
+              goldTo: '#eda842',
+            },
+            backgroundImage: {
+              'dark-gradient': 'radial-gradient(ellipse at top, hsl(215, 28%, 17%), #0B0E13)',
+            },
+            animation: {
+              'fade-in': 'fadeIn 0.5s ease-out forwards',
+              'pulse-soft': 'pulse 2.2s ease-in-out infinite',
+              'sweep': 'sweep 1.2s linear infinite',
+              'text-gradient': 'text-gradient 3s ease-in-out infinite'
+            },
+            keyframes: {
+              fadeIn: {
+                'from': { opacity: 0, transform: 'translateY(10px)' },
+                'to': { opacity: 1, transform: 'translateY(0)' },
+              },
+              sweep: {
+                '0%': { 'background-position': '0% 50%' },
+                '50%': { 'background-position': '100% 50%' },
+                '100%': { 'background-position': '0% 50%' },
+              },
+              'text-gradient': {
+                '0%': { 'background-position': '0% 50%' },
+                '50%': { 'background-position': '100% 50%' },
+                '100%': { 'background-position': '0% 50%' },
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+      // Force dark theme
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
+    </script>
+    <style>
+      .animate-fade-in {
+        animation: fadeIn 0.5s ease-out forwards;
+      }
+      /* Custom Toggle Switch Styles */
+      .toggle-checkbox:checked {
+        right: 0;
+        border-color: #6A4CFF; 
+      }
+      .toggle-checkbox:checked + .toggle-label {
+        background-color: #6A4CFF;
+      }
+      .glass-card {
+        background-color: theme('colors.surfaceLight');
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .dark .glass-card {
+        background-color: theme('colors.surfaceDark');
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+       body {
+        font-family: 'Inter', sans-serif;
+      }
+      h1, h2, h3, .font-display {
+        font-family: 'Poppins', sans-serif;
+      }
+      .brand-gradient {
+        background-image: linear-gradient(90deg, theme('colors.brandFrom'), theme('colors.brandTo'));
+      }
+      .gold-gradient {
+        background-image: linear-gradient(90deg, theme('colors.goldFrom'), theme('colors.goldTo'));
+      }
+      .animate-text-gradient {
+        background-size: 200%;
+        animation: text-gradient 3s ease-in-out infinite;
+      }
+      .watermark-top-left { top: 8px; left: 8px; }
+      .watermark-top-center { top: 8px; left: 50%; transform: translateX(-50%); }
+      .watermark-top-right { top: 8px; right: 8px; }
+      .watermark-center { top: 50%; left: 50%; transform: translate(-50%, -50%); }
+      .watermark-bottom-left { bottom: 8px; left: 8px; }
+      .watermark-bottom-center { bottom: 8px; left: 50%; transform: translateX(-50%); }
+      .watermark-bottom-right { bottom: 8px; right: 8px; }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.29.0",
+    "react-router-dom": "https://aistudiocdn.com/react-router-dom@^7.9.5"
+  }
+}
+</script>
+</head>
+  <body class="bg-bgLight dark:bg-dark-gradient text-gray-800 dark:text-gray-200">
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+    <script>
+      // After the page loads, replace all elements with data-lucide
+      lucide.createIcons();
+    </script>
+  </body>
+</html>
